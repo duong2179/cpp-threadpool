@@ -45,11 +45,11 @@ int main() {
   pool.queue_job(job_3);
   pool.queue_job(job_4);
 
-  int counter = 0;
-  while (counter < 3) {
-    std::cout << "Terminating in " << (3 - counter) << " seconds" << std::endl;
+  int counter = 3;
+  while (counter > 0) {
+    std::cout << "Terminating in " << counter << " seconds" << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    ++counter;
+    --counter;
   }
 
   pool.stop_plz();

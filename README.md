@@ -1,2 +1,2 @@
 # cpp-threadpool
-A trivial implementation for thread pool in C++
+A trivial implementation for thread pool using C++ 11.

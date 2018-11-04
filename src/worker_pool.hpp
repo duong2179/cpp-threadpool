@@ -12,12 +12,12 @@ using namespace std;
 
 class WorkerPool {
  private:
-  uint32_t num_threads_;
+  size_t num_threads_;
   std::shared_ptr<JobQueue<JobItemPtr>> job_queue_;
   std::vector<std::shared_ptr<std::thread>> thread_pool_;
 
  public:
-  WorkerPool(uint32_t num_threads)
+  WorkerPool(size_t num_threads)
       : num_threads_(num_threads), job_queue_(new JobQueue<JobItemPtr>()) {}
   ~WorkerPool() {}
 
@@ -25,7 +25,7 @@ class WorkerPool {
   void join();
   void queue_job(JobItemPtr job);
   bool is_empty();
-  uint32_t count_jobs();
+  size_t count_jobs();
   void stop_plz();
 };
 

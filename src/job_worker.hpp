@@ -1,7 +1,6 @@
 #ifndef JOB_WORKER_HPP
 #define JOB_WORKER_HPP
 
-#include <cstdint>
 #include <memory>
 #include "job_item.hpp"
 #include "job_queue.hpp"
@@ -9,11 +8,11 @@
 class JobWorker {
  private:
   std::shared_ptr<JobQueue<JobItemPtr>> job_queue_;
-  uint32_t worker_id_;
+  size_t worker_id_;
 
  public:
   JobWorker(std::shared_ptr<JobQueue<JobItemPtr>> shared_queue,
-            uint32_t worker_id)
+            size_t worker_id)
       : job_queue_(shared_queue), worker_id_(worker_id){};
   ~JobWorker(){};
 
@@ -25,7 +24,7 @@ class JobWorker {
     }
   }
 
-  uint32_t worker_id() { return worker_id_; }
+  size_t worker_id() { return worker_id_; }
 };
 
 #endif

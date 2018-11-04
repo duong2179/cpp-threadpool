@@ -2,7 +2,6 @@
 #define JOB_QUEUE_HPP
 
 #include <condition_variable>
-#include <cstdint>
 #include <mutex>
 #include <queue>
 
@@ -65,9 +64,9 @@ class JobQueue {
     std::swap(queue_, empty_queue);
   }
 
-  uint32_t count() {
+  size_t count() {
     std_mtx_unq_lck lock(mutex_);
-    return uint32_t(queue_.size());
+    return size_t(queue_.size());
   }
 };
 
